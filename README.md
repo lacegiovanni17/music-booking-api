@@ -1,4 +1,4 @@
-# MUSIC_BOOKING
+# MUSIC_BOOKING APP
 # music_booking_api
 🎵 The Music Booking API is a powerful backend service that connects artists 🎤, event organizers 🎟️, and music lovers 🎶 seamlessly. 
 Organizers can create and manage event listings 📅, while artists can showcase their profiles 🖼️ and apply for gigs. 

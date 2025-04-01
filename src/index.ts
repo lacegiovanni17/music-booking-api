@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db"; // Import the optimized db connection
+import rootRouter from "./modules/root.routes";
+import { errorMiddleware } from "./middleware/error.middleware";
 
 dotenv.config();
 
@@ -18,6 +20,13 @@ connectDB(MONGO_URI);
 // Routes
 app.get("/", (req, res) => {
   res.send("🎵 Welcome to the Music Booking API!");
+});
+
+app.use("/api/v1", rootRouter);
+
+// ❗ Error Handling Middleware MUST be **after** all routes
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  errorMiddleware(err, req, res, next);
 });
 
 // Start Server

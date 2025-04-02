@@ -16,7 +16,7 @@ export const registerValidationSchema = Joi.object({
     .valid(UserRoles.ARTIST, UserRoles.ORGANIZER)
     .required()
     .messages({
-      "any.only": 'User role must be either "ARTIST" or "EVENT_ORGANIZER"',
+      "any.only": 'User role must be either "ARTIST" or "ORGANIZER"',
       "string.empty": "User role is required",
     }),
 

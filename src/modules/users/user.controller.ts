@@ -8,7 +8,7 @@ export const getUserProfile = async (req: Request, res: Response, next: NextFunc
   try {
     const userId = req.params.userId;
     const response = await userService.getUserProfile(userId);
-    res.status(200).json(response);
+    res.json(response);
   } catch (error) {
     next(error);
   }
@@ -25,7 +25,7 @@ export const findUserByEmail = async (req: Request, res: Response, next: NextFun
     if (!user) {
       throw new NotFoundException("User not found");
     }
-    res.status(200).json(user);
+    res.json(user);
   } catch (error) {
     next(error);
   }
@@ -35,7 +35,7 @@ export const findUserByEmail = async (req: Request, res: Response, next: NextFun
 export const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const response = await userService.getAllUsers();
-    res.status(200).json(response);
+    res.json(response);
   } catch (error) {
     next(error);
   }
@@ -45,7 +45,7 @@ export const getAllUsers = async (req: Request, res: Response, next: NextFunctio
 export const getAllArtistes = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const response = await userService.getAllArtistes();
-    res.status(200).json(response);
+    res.json(response);
   } catch (error) {
     next(error);
   }
@@ -55,7 +55,7 @@ export const getAllArtistes = async (req: Request, res: Response, next: NextFunc
 export const getAllOrganisers = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const response = await userService.getAllOrganisers();
-    res.status(200).json(response);
+    res.json(response);
   } catch (error) {
     next(error);
   }
@@ -67,7 +67,7 @@ export const updateUserProfile = async (req: Request, res: Response, next: NextF
     const userId = req.params.userId;
     const userData = req.body;
     const response = await userService.updateUserProfile(userId, userData);
-    res.status(200).json(response);
+    res.json(response);
   } catch (error) {
     next(error);
   }
@@ -77,7 +77,7 @@ export const updateUserProfile = async (req: Request, res: Response, next: NextF
 export const totalArtistesCount = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const response = await userService.totalArtistesCount();
-    res.status(200).json(response);
+    res.json(response);
   } catch (error) {
     next(error);
   }
@@ -87,7 +87,7 @@ export const totalArtistesCount = async (req: Request, res: Response, next: Next
 export const totalOrganisersCount = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const response = await userService.totalOrganisersCount();
-    res.status(200).json(response);
+    res.json(response);
   } catch (error) {
     next(error);
   }
@@ -97,7 +97,7 @@ export const totalOrganisersCount = async (req: Request, res: Response, next: Ne
 export const totalUsersCount = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const response = await userService.totalUsersCount();
-    res.status(200).json(response);
+    res.json(response);
   } catch (error) {
     next(error);
   }

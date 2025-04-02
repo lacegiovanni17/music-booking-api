@@ -5,6 +5,7 @@ import UtilService from "../../utils/services/utils.service";
 import { NotFoundException } from "../../utils/exceptions/not_found.exception";
 import { BadRequestsException } from "../../utils/exceptions/bad_request.exception";
 import { IGenericResponseModel } from "../../utils/interfaces/generic_response.interface";
+import { UserRoles } from "./user.enum";
 
 class UserService {
   private utilservice = new UtilService();
@@ -82,7 +83,7 @@ class UserService {
   // Get all Artistes
   public async getAllArtistes(): Promise<IGenericResponseModel<IUser[]>> {
     try {
-      const artistes = await User.find({ user_role: "ARTISTE" }).lean();
+      const artistes = await User.find({ user_role: { $in: ["ARTIST", UserRoles.ARTIST] } }).lean();
 
       return this.utilservice.buildApiResponse({
         data: artistes,
@@ -99,7 +100,7 @@ class UserService {
   // Get all Organisers
   public async getAllOrganisers(): Promise<IGenericResponseModel<IUser[]>> {
     try {
-      const organisers = await User.find({ user_role: "ORGANISER" }).lean();
+      const organisers = await User.find({ user_role: { $in: ["ORGANISER", UserRoles.ORGANIZER] } }).lean();
 
       return this.utilservice.buildApiResponse({
         data: organisers,
@@ -142,7 +143,7 @@ class UserService {
   // Total Artistes Count
   public async totalArtistesCount(): Promise<IGenericResponseModel<number>> {
     try {
-      const count = await User.countDocuments({ user_role: "ARTISTE" });
+      const count = await User.countDocuments({ UserRole: { $in: ["ARTIST", UserRoles.ARTIST] } });
 
       return this.utilservice.buildApiResponse({
         data: count,
@@ -159,7 +160,7 @@ class UserService {
   // Total Organisers Count
   public async totalOrganisersCount(): Promise<IGenericResponseModel<number>> {
     try {
-      const count = await User.countDocuments({ user_role: "ORGANISER" });
+      const count = await User.countDocuments({ UserRole: { $in: ["ORGANISER", UserRoles.ORGANIZER] } });
 
       return this.utilservice.buildApiResponse({
         data: count,

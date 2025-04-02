@@ -8,7 +8,9 @@ Artists can be easily discovered 🔍, and event organizers can streamline their
 Prioritizing security 🔐, efficiency, and user-friendly interactions, this API enhances the live music 🎼 experience. 
 Whether you're an artist 🎸 looking for gigs or an organizer 🎭 seeking top talent, this API bridges the gap effortlessly!
 
-### PICTURE
+### Postman Pic
+![music_postman_testing](https://github.com/user-attachments/assets/44ac1f5e-8ea7-4f65-93b9-7b0ac4ae9423)
+
 
 
 
@@ -60,8 +62,9 @@ So, you are to create a service for the Music Booking App that does this:
 
 
 
-## Project Description: “Tweet AI”
-
+## Project Description: “Music Booking API”
+The Music Booking App API follows a modular monolith architecture, chosen for its clean separation of concerns—each module (auth, users, artists, events, bookings) operates independently while remaining part of a unified codebase, simplifying development and testing without microservices complexity. MongoDB was selected for its flexible schema, allowing dynamic event and artist data structures, while its indexing and embedded documents optimize read-heavy booking queries. Error handling is standardized with custom exceptions (404 Not Found, 400 Bad Request) and a centralized middleware, ensuring consistent API responses. Security is enforced via JWT authentication, role-based access control (RBAC), and rate limiting, while Redis caching and database indexing enhance scalability. The RESTful API design uses resource-based URLs and HTTP methods, with payload validation via Joi to prevent malformed requests. This architecture balances maintainability, performance, and scalability, making it ideal for handling high-volume booking transactions securely.
+![music_mongoDB](https://github.com/user-attachments/assets/1056b244-63b6-4ff3-b90e-a1c994aa053a)
 
 ## Getting Started
 ## Mini-project   music_booking_api
@@ -78,26 +81,38 @@ So, you are to create a service for the Music Booking App that does this:
 1. From the parent directory change to the backend folder of the project by running the following command `cd backend`
 2. run `npm install` to install all packages in package.json file
 3. From the root folder run the following command to start the backend server: `npm run start` 
-4. The backend server will be running at http://localhost:3000.
+4. The backend server will be running at http://localhost:5000.
 
 ## Endpoints
+router.use("/auth", authRoutes);      // Authentication (Login, Register)
+router.use("/users", userRoutes);      // User management (Artists, Organizers)
+router.use("/artists", artistRouter);  // Artist-specific routes
+router.use("/events", eventRouter);    // Event creation & management
+router.use("/bookings", bookingRouter);// Booking transactions
 
 
 ## Usage
-To retrieve all autobots, make a GET request to http://localhost:3000/
+To retrieve all users, make a GET request to http://localhost:5000/
 
-Please use Postman to test endpoints here  http://localhost:3000/`${path}`
+Please use Postman to test endpoints here  http://localhost:5000/`${path}`
 
 ## Documentation
 Access documentation here - https://documenter.getpostman.com/
 
 ## Error Handling
 The application provides appropriate error handling for invalid inputs and unexpected scenarios.
+* 400 Bad Request - Invalid request data/validation errors
+* 401 Unauthorized - Missing or invalid authentication
+* 403 Forbidden - Authenticated but insufficient permissions
+* 404 Not Found - Resource doesn't exist
+* 409 Conflict - Resource conflict (e.g., duplicate booking)
+* 422 Unprocessable Entity - Semantic errors in request
+* 500 Internal Server Error - Unexpected server errors
 
 ## Testing
-The application includes comprehensive unit tests to ensure reliability and functionality. Run tests using the following command: `npm test`
+![music_booking_api](https://github.com/user-attachments/assets/f6beb8d6-c2f0-42e2-93af-41e39affdaf5)
 
-With these instructions, developers and users will be able to quickly set up and run the TweetAI Backend App for testing and development purposes.
+With these instructions, developers and users will be able to quickly set up and run the Music_Booking_API Backend App for testing and development purposes.
 
 ## Author
 

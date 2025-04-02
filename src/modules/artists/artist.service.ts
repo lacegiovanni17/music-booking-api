@@ -11,15 +11,17 @@ class ArtistService {
   // Create an artist profile
   public async createArtistProfile(userId: string, data: Partial<IArtist>): Promise<IGenericResponseModel<IArtist | null | Error>> {
     try {
-      const existingArtist = await Artist.findOne({ user: userId });
-      if (existingArtist) {
+      // Check if the stage_name already exists in any artist profile
+      const existingStageName = await Artist.findOne({ stage_name: data.stage_name });
+      if (existingStageName) {
         return this.utilservice.buildApiErrorResponse({
           data: null,
-          message: "Artist profile already exists for this user.",
+          message: "Stage name already taken, please choose another.",
           statusCode: 400,
         });
       }
 
+      // Create the artist profile (without the user existence check)
       const artist = await Artist.create({ user: userId, ...data });
       return this.utilservice.buildApiResponse({
         data: artist,
@@ -32,6 +34,7 @@ class ArtistService {
       throw error;
     }
   }
+
 
   // Get artist profile by user ID
   public async getArtistProfile(userId: string): Promise<IGenericResponseModel<IArtist | Error>> {

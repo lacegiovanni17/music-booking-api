@@ -10,17 +10,26 @@ import {
   totalOrganisersCount,
   totalUsersCount,
 } from "./user.controller";
+import { authenticateUser } from "../../middleware/auth.middleware";
+import validationMiddleware from "../../middleware/validation.middleware";
+import { updateUserSchema } from "./user.validation";
 
-const router = Router();
+const userRouter = Router();
 
-router.get("/profile/:userId", getUserProfile);
-router.get("/find", findUserByEmail);
-router.get("/all", getAllUsers);
-router.get("/artistes", getAllArtistes);
-router.get("/organisers", getAllOrganisers);
-router.put("/update/:userId", updateUserProfile);
-router.get("/count/artistes", totalArtistesCount);
-router.get("/count/organisers", totalOrganisersCount);
-router.get("/count/users", totalUsersCount);
+userRouter.get("/profile/:userId", authenticateUser, getUserProfile);
 
-export default router;
+userRouter.get("/find-by-email", authenticateUser, findUserByEmail);
+
+userRouter.get("/all-users", authenticateUser, getAllUsers);
+
+userRouter.get("/artistes", authenticateUser, getAllArtistes);
+
+userRouter.get("/organisers", authenticateUser, getAllOrganisers);
+
+userRouter.put("/update/:userId", authenticateUser, validationMiddleware(updateUserSchema), updateUserProfile);
+
+userRouter.get("/count/artists", authenticateUser, totalArtistesCount);
+userRouter.get("/count/organizers", authenticateUser, totalOrganisersCount);
+userRouter.get("/count/users", authenticateUser, totalUsersCount);
+
+export default userRouter;

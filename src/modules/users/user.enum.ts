@@ -10,4 +10,4 @@ export enum UserStatus {
   BANNED = "BANNED",         // Permanently blocked
   DELETED = "DELETED",       // Soft-deleted account
 }
- 
+

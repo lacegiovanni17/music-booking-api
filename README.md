@@ -8,7 +8,7 @@ Artists can be easily discovered 🔍, and event organizers can streamline their
 Prioritizing security 🔐, efficiency, and user-friendly interactions, this API enhances the live music 🎼 experience. 
 Whether you're an artist 🎸 looking for gigs or an organizer 🎭 seeking top talent, this API bridges the gap effortlessly!
 
-### Postman Pic
+### Postman Pic https://documenter.getpostman.com/view/25014777/2sB2cSgiao
 ![music_postman_testing](https://github.com/user-attachments/assets/44ac1f5e-8ea7-4f65-93b9-7b0ac4ae9423)
 
 
@@ -95,6 +95,7 @@ By focusing on maintainability, performance, and security, this API is built to 
 2. run `npm install` to install all packages in package.json file
 3. From the root folder run the following command to start the backend server: `npm run start` 
 4. The backend server will be running at http://localhost:5000.
+5. Ask for MongoDB env to connect to Database.
 
 ## Endpoints
 router.use("/auth", authRoutes);      // Authentication (Login, Register)
@@ -105,12 +106,12 @@ router.use("/bookings", bookingRouter);// Booking transactions
 
 
 ## Usage
-To retrieve all users, make a GET request to http://localhost:5000/
+To retrieve all users, make a GET request to http://localhost:5000/api/v1/users/all-users
 
 Please use Postman to test endpoints here  http://localhost:5000/`${path}`
 
 ## Documentation
-Access documentation here - https://documenter.getpostman.com/
+Access documentation here - https://documenter.getpostman.com/view/25014777/2sB2cSgiao
 
 ## Error Handling
 The application provides appropriate error handling for invalid inputs and unexpected scenarios.

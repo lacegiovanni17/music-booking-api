@@ -4,20 +4,21 @@ import dotenv from "dotenv";
 import connectDB from "./config/db"; // Import the optimized db connection
 import rootRouter from "./modules/root.routes";
 import { errorMiddleware } from "./middleware/error.middleware";
+import { globalLimiter } from "./config/ratelimit";
 
 dotenv.config();
 
 const app = express();
 
-// Middleware
+
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
+app.use(globalLimiter); // Applies to ALL routes
+
 const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/music_booking";
 connectDB(MONGO_URI);
 
-// Routes
 app.get("/", (req, res) => {
   res.send("🎵 Welcome to the Music Booking API!");
 });

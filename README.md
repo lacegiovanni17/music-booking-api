@@ -113,11 +113,11 @@ By focusing on maintainability, performance, and security, this API is built to 
 ## Endpoints
 Note: All endpoints are accessible under the /api/v1 prefix (e.g., /api/v1/auth/login, /api/v1/users/all-users). There are no root-level shortcuts without the /api/v1 prefix.
 
-router.use("/auth", authRoutes);      // Authentication (Login, Register)
-router.use("/users", userRoutes);      // User management (Artists, Organizers)
-router.use("/artists", artistRouter);  // Artist-specific routes
-router.use("/events", eventRouter);    // Event creation & management
-router.use("/bookings", bookingRouter);// Booking transactions
+* router.use("/auth", authRoutes);      // Authentication (Login, Register)
+* router.use("/users", userRoutes);      // User management (Artists, Organizers)
+* router.use("/artists", artistRouter);  // Artist-specific routes
+* router.use("/events", eventRouter);    // Event creation & management
+* router.use("/bookings", bookingRouter);// Booking transactions
 
 ## Core Database Models
 * artists

@@ -161,7 +161,7 @@ The application provides appropriate error handling for invalid inputs and unexp
 2. Set up an environment with the following variables:
     * baseUrl: The API URL (e.g., `http://localhost:5000`)
     * token: Will be set after login
-    * `user_id, artist_id, event_id`, booking_id: Will be set as you create resources
+    * `user_id, artist_id, event_id, booking_id`: Will be set as you create resources
 
 ![music_booking_api](https://github.com/user-attachments/assets/f6beb8d6-c2f0-42e2-93af-41e39affdaf5)
 
